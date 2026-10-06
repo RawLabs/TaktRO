@@ -1,0 +1,22 @@
+# Local operational, demo, and reference databases
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite3-shm
+*.sqlite3-wal
+__pycache__/
+*.pyc
+.venv/
+venv/
+/.local/nhtsa/
+*.log
+# Generated diagnostics and incident captures can contain private shop context
+/.taktro/
+/.ui_audit/
+.env
+.env.*
+!.env.example
