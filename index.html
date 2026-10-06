@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaktRO - Command Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="brand">
+      <img src="media/TaktRO_media_package_2026-08-16/TaktRO_media_package/01_WEB/TaktRO_logo_dark_400px.png" alt="TaktRO Logo" class="top-brand-logo">
+      <span class="app-title">SERVICE COMMAND ENGINE v1.0</span>
+    </div>
+    <div class="top-user-center">
+      <span class="header-user-display" id="headerUserDisplay">NO USER LOGGED IN</span>
+    </div>
+    <div class="top-meta">
+      <span class="time-clock" id="liveClock">00:00:00</span>
+      <span class="today-date" id="todayDateDisplay"></span>
+      <span class="advisor-badge">NO ADVISOR LOGGED IN</span>
+    </div>
+  </header>
+
+  <!-- MAIN DASHBOARD CONTENT -->
+  <main class="dashboard">
+    
+    <div class="section-header">
+      <h2>SELECT A TASK OR PRESS A SINGLE HOTKEY</h2>
+      <span class="sub-title">PURE THROUGHPUT • NO METRIC NOISE • KEYBOARD FIRST</span>
+    </div>
+
+    <div class="card-grid">
+      
+      <!-- CARD 1: REPAIR ORDERS -->
+      <div class="dash-card" id="cardNewRo" data-permission="repair_orders" role="button" tabindex="0" data-command="dash.warp_orders">
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+O</kbd></div>
+        <div class="card-content">
+          <h3>REPAIR ORDERS</h3>
+          <p>Access the repair order workspace. Write up new ROs [ALT+N], manage active lines, and C/W/I/G intake.</p>
+        </div>
+        <div class="card-footer-action">PRESS [SHIFT+O]</div>
+      </div>
+
+      <!-- CARD 2: APPOINTMENT BOOKING -->
+      <div class="dash-card" id="cardAppt" data-permission="appointments" role="button" tabindex="0" data-command="dash.warp_appts">
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+A</kbd></div>
+        <div class="card-content">
+          <h3>APPOINTMENT BOOKING</h3>
+          <p>Schedule incoming customer service appointments and assign requested work lines.</p>
+        </div>
+        <div class="card-footer-action">PRESS [SHIFT+A]</div>
+      </div>
+
+      <!-- CARD 3: CUSTOMER DIRECTORY -->
+      <div class="dash-card" id="cardCust" data-permission="customers" role="button" tabindex="0" data-command="dash.warp_cust">
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+C</kbd></div>
+        <div class="card-content">
+          <h3>CUSTOMER DIRECTORY</h3>
+          <p>Search by license plate, phone, name, or email. Greet arriving drive customers instantly.</p>
+        </div>
+        <div class="card-footer-action">PRESS [SHIFT+C]</div>
+      </div>
+
+      <!-- CARD 4: VEHICLE & EQUIPMENT DIRECTORY -->
+      <div class="dash-card" id="cardVeh" data-permission="customers" role="button" tabindex="0" data-command="dash.warp_veh">
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+V</kbd></div>
+        <div class="card-content">
+          <h3>VEHICLE &amp; EQUIPMENT LOOKUP</h3>
+          <p>Search persistent vehicle &amp; equipment identities, shop fleet assets (loaners, runner trucks), VIN, plate, or notes.</p>
+        </div>
+        <div class="card-footer-action">PRESS [SHIFT+V]</div>
+      </div>
+
+      <!-- CARD 5: PARTS & INVENTORY CONTROL -->
+      <div class="dash-card" id="cardParts" data-permission="parts" role="button" tabindex="0" data-command="dash.warp_parts">
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+P</kbd></div>
+        <div class="card-content">
+          <h3>PARTS &amp; INVENTORY CONTROL</h3>
+          <p>Search by Part #, Description, or Bin. 1-Pass Intake, RO line reservation, OTC counter sales, cycle counting, stock movement ledger.</p>
+        </div>
+        <div class="card-footer-action">PRESS [SHIFT+P]</div>
+      </div>
+
+      <!-- CARD 6: FINAL CASHOUT & POSTING -->
+      <div class="dash-card" id="cardInvoice" data-permission="cashout" role="button" tabindex="0" data-action="app.navigate" data-action-param="F">
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+F</kbd></div>
+        <div class="card-content">
+          <h3>FINAL CASHOUT &amp; POSTING</h3>
+          <p>Cash out Customer Pay [C] lines at counter. Post closed batches to GL stream while Warranty [W] remains open.</p>
+        </div>
+        <div class="card-footer-action">PRESS [SHIFT+F]</div>
+      </div>
+
+      <!-- CARD 7: REPAIR ORDER HISTORY -->
+      <div class="dash-card" id="cardHist" data-permission="repair_orders" role="button" tabindex="0" data-action="app.navigate" data-action-param="H">
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+H</kbd></div>
+        <div class="card-content">
+          <h3>REPAIR ORDER HISTORY</h3>
+          <p>Search closed and active ROs. Filter by Customer, VIN, Part #, Job Type, or Date Range.</p>
+        </div>
+        <div class="card-footer-action">PRESS [SHIFT+H]</div>
+      </div>
+
+      <!-- CARD 8: VENDOR DIRECTORY -->
+      <div class="dash-card" id="cardVendors" data-permission="shop_setup" role="button" tabindex="0" data-command="dash.warp_vendors">
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+K</kbd></div>
+        <div class="card-content">
+          <h3>VENDOR DIRECTORY</h3>
+          <p>Search, add, and manage parts suppliers, order cutoff details, and contact lists.</p>
+        </div>
+        <div class="dash-card-flag">MUST-START</div>
+        <div class="card-footer-action">PRESS [SHIFT+K]</div>
+      </div>
+
+      <!-- SHOP SETTINGS -->
+      <div class="dash-card" id="cardSettings" data-permission-any="shop_setup staff_admin" role="button" tabindex="0" data-action="app.navigate" data-action-param="S" >
+        <div class="card-key"><kbd class="keycap keycap--dashboard keycap--warp">SHIFT+S</kbd></div>
+        <div class="card-content">
+          <h3>SHOP SETTINGS</h3>
+          <p>Manage job op codes, employees, position templates, rates, taxes, and fees.</p>
+        </div>
+        <div class="card-footer-action">PRESS [SHIFT+S]</div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ALWAYS-ON BOTTOM INSTRUCTION LEGEND + LIVE TIME POOL HOURS -->
+  <footer class="bottom-legend">
+    <div class="legend-items">
+      <div class="legend-item" data-action="app.navigate" data-action-param="O"><kbd class="keycap keycap--index">O</kbd> Orders</div>
+      <div class="legend-item" data-action="app.navigate" data-action-param="A"><kbd class="keycap keycap--index">A</kbd> Appts</div>
+      <div class="legend-item" data-action="app.navigate" data-action-param="C"><kbd class="keycap keycap--index">C</kbd> Customer</div>
+      <div class="legend-item" data-action="app.navigate" data-action-param="V"><kbd class="keycap keycap--index">V</kbd> Vehicle</div>
+      <div class="legend-item" data-action="app.navigate" data-action-param="P"><kbd class="keycap keycap--index">P</kbd> Parts</div>
+      <div class="legend-item" data-permission="cashout" data-action="app.navigate" data-action-param="F"><kbd class="keycap keycap--index">F</kbd> Cashout</div>
+      <div class="legend-item" data-action="app.navigate" data-action-param="H"><kbd class="keycap keycap--index">H</kbd> History</div>
+      <div class="legend-item" data-permission="shop_setup" data-action="app.navigate" data-action-param="K"><kbd class="keycap keycap--index">K</kbd> Vendors</div>
+      <div class="legend-item" data-permission-any="shop_setup staff_admin" data-action="app.navigate" data-action-param="S"><kbd class="keycap keycap--index">S</kbd> Settings</div>
+      <div class="legend-item highlight" data-action="app.help"><kbd class="keycap keycap--index">?</kbd> Help</div>
+      <div class="legend-item" style="border-left:1px solid var(--border-bright); margin-left:8px; padding-left:12px;"><kbd class="keycap keycap--warp">SHIFT+KEY</kbd> Warp Jump (ESC Return)</div>
+    </div>
+    <div class="legend-status">
+      <span class="sys-ok">TaktRO ACTIVE</span>
+    </div>
+  </footer>
+
+  <!-- MODAL / OVERLAY FOR RO WORKSPACE (LAUNCHES WHEN TASK SELECTED) -->
+  <div class="ro-workspace-overlay hidden" id="workspaceOverlay">
+    <div class="workspace-modal">
+      <div class="modal-header">
+        <h2><img src="media/TaktRO_media_package_2026-08-16/TaktRO_media_package/02_APP/TaktRO_app_icon_64.png" alt="TaktRO Logo" class="workspace-header-logo-img"> <span id="activeWorkspaceLabel">TaktRO</span> ACTIVE WORKSPACE - <span id="activeTaskTitle">NEW REPAIR ORDER</span></h2>
+        <span class="close-hint">Press <kbd class="keycap keycap--nav">ESC</kbd> to Return to Main Dashboard</span>
+      </div>
+      <div class="workspace-content" id="workspaceContent">
+        <!-- RO WORKSPACE INJECTED VIA JS -->
+      </div>
+      <div class="workspace-legend-rail" id="workspaceLegendRail">
+        <button type="button" class="workspace-legend-toggle" id="workspaceLegendToggle" aria-expanded="false" aria-controls="workspaceLegendItems" data-action="workspace.legend">
+          <kbd class="keycap keycap--command">ALT+K</kbd> COLOR KEY <span aria-hidden="true" id="workspaceLegendChevron">▲</span>
+        </button>
+        <div class="workspace-legend-items hidden" id="workspaceLegendItems" aria-live="polite"></div>
+        <span class="workspace-legend-note">COLOR REINFORCES THE LABEL — IT NEVER REPLACES IT.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HELP & LOCAL AI ASSIST FLOATING MODAL WINDOW -->
+  <div class="help-overlay hidden" id="helpModalOverlay">
+    <div class="help-modal">
+      <div class="modal-header">
+        <h2><span class="logo">TaktRO</span> HELP &amp; ASSISTANCE CENTER</h2>
+        <span class="close-hint">Press <kbd class="keycap keycap--nav">ESC</kbd> to Close</span>
+      </div>
+      <div class="help-body" id="helpModalContent">
+        <!-- Rendered dynamically by renderHelpModal() in app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- EMPLOYEE PIN LOGIN / AUTO-LOCK FLOATING OVERLAY WINDOW -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-modal">
+      <div class="auth-header">
+        <span class="logo">TaktRO</span>
+        <h3>EMPLOYEE AUTHENTICATION</h3>
+      </div>
+      <p class="auth-hint">ENTER 4-DIGIT EMPLOYEE PIN CODE TO UNLOCK SESSION & STAMP ACTIONS</p>
+      <form id="authForm" data-submit-action="app.login">
+        <input type="password" id="employeePin" maxlength="4" placeholder="••••" autofocus autocomplete="off" class="auth-pin-input" data-input-action="app.pin">
+      </form>
+      <div class="auth-error" id="authError" role="alert"></div>
+      <div class="auth-footer">
+        <span>SECURITY TIMEOUT: 20 MIN IDLE AUTO-LOCK</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="opcode_picker.js"></script>
+  <script src="parts/parts.js"></script>
+  <script src="orders/orders.js"></script>
+  <script src="customers/customers.js"></script>
+  <script src="vehicles/vehicles.js"></script>
+  <script src="appointments/appointments.js"></script>
+  <script src="staff/staff.js"></script>
+  <script src="setup/setup.js"></script>
+  <script src="setup/vendors.js"></script>
+  <!-- FLOATING DEVELOPER DIAGNOSTIC WIDGET & DRAWER -->
+  <div id="diagFloatingWidget" class="diag-floating-badge" data-action="app.toggleDiagDrawer">
+    <span id="diagStatusDot" class="diag-status-dot status-pass">●</span>
+    <span id="diagLatencyText">18ms</span>
+    <span style="opacity:0.6; margin:0 2px;">|</span>
+    <strong>DIAG</strong>
+  </div>
+
+  <div id="diagDrawerOverlay" class="diag-drawer-container hidden">
+    <div class="diag-drawer-header" id="diagDrawerHeader" title="Click and drag to move window anywhere on screen">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="opacity:0.5; font-size:12px;">⠿</span>
+        <span class="diag-status-dot status-pass" id="diagDrawerDot">●</span>
+        <strong style="font-size:13px; color:var(--accent-amber);">TaktRO DIAGNOSTIC SUITE</strong>
+      </div>
+      <button class="secondary-action-btn action-compact" data-action="app.toggleDiagDrawer">✕</button>
+    </div>
+
+    <div class="diag-drawer-body">
+      <div class="diag-metrics-grid">
+        <div class="diag-metric-box">
+          <span class="diag-label">HEALTH</span>
+          <strong id="diagHealthVal" class="u-text-emerald">PASS</strong>
+        </div>
+        <div class="diag-metric-box">
+          <span class="diag-label">BASELINE</span>
+          <strong id="diagBaselineVal">45cc1e2</strong>
+        </div>
+        <div class="diag-metric-box">
+          <span class="diag-label">CHANGED</span>
+          <strong id="diagChangedVal">0 files</strong>
+        </div>
+        <div class="diag-metric-box">
+          <span class="diag-label">ANOMALIES</span>
+          <strong id="diagAnomaliesVal" class="u-text-amber">0</strong>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <label class="ui-label-dim">WHAT WENT WRONG? (HUMAN SYMPTOM REPORT)</label>
+        <textarea id="diagSymptomInput" class="control-full" rows="2" placeholder="e.g. Pressing N from customer opens RO but customer is not populated..." style="font-size:11px; resize:none;"></textarea>
+      </div>
+
+      <button id="btnCaptureIncident" type="button" class="primary-action-btn action-emerald" style="width:100%; justify-content:center;" data-action="app.captureDiagIncident">
+        ⚡ CAPTURE INCIDENT CAPSULE
+      </button>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+        <button type="button" class="secondary-action-btn action-compact" data-action="app.runDiagAudit">🔍 AUDIT</button>
+        <button type="button" class="secondary-action-btn action-compact" data-action="app.runDiagDiff">📊 DIFF</button>
+        <button type="button" class="secondary-action-btn action-compact" data-action="app.runDiagTests">🧪 TESTS</button>
+      </div>
+
+      <div id="diagLastCapsuleBox" class="diag-capsule-box hidden">
+        <div class="ui-label-dim">LAST GENERATED CAPSULE</div>
+        <div id="diagCapsulePath" style="font-size:11px; color:var(--accent-amber); font-weight:700; word-break:break-all;">.taktro/incidents/INC-20260816.md</div>
+        <button type="button" class="positive-action-btn action-compact" style="margin-top:6px; width:100%; justify-content:center;" data-action="app.copyCodexPacket">
+          📋 COPY CODEX PACKET PATH
+        </button>
+      </div>
+
+      <details style="font-size:10px; color:var(--text-dim); margin-top:4px;">
+        <summary style="cursor:pointer;" class="u-text-amber">⚙️ Advanced Baseline Tools</summary>
+        <div style="margin-top:6px; padding:6px; background:var(--surface-raised); border-radius:3px;">
+          <p style="margin:0 0 6px 0;">Record current system state as official known-good baseline snapshot.</p>
+          <button type="button" class="secondary-action-btn action-compact" data-action="app.confirmSetBaseline">SET CURRENT STATE AS KNOWN GOOD</button>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="perf.js"></script>
+  <script src="async_orchestrator.js"></script>
+  <script src="event_delegator.js"></script>
+  <script src="feedback_manager.js"></script>
+  <script src="accessibility_manager.js"></script>
+  <script src="command_registry.js"></script>
+  <script src="ui_components.js"></script>
+  <script src="workspace_lifecycle.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

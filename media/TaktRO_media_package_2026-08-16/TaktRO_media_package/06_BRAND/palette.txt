@@ -1,0 +1,6 @@
+TaktRO Black     #0A0A0B
+Charcoal         #111214
+Gold             #D4A017
+Silver           #C0C0C0
+Redline Accent   #E00014
+White            #F5F5F5

@@ -1,0 +1,2 @@
+"""Shop Setup & Rules domain."""
+

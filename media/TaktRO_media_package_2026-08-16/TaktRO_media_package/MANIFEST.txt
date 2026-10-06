@@ -1,0 +1,14 @@
+TaktRO MEDIA PACKAGE
+====================
+Primary: tachometer + TaktRO + "Less friction. More flow."
+
+Folders:
+00_MASTER    selected source and cleaned dark master
+01_WEB       standard web PNG sizes + WebP
+02_APP       tach-based app icons, favicon, splash
+03_SOCIAL    square/profile/banner/share graphics
+04_PRINT     high-resolution raster print/invoice applications
+05_ON_SCREEN splash and logo lockups
+06_BRAND     brand summary, palette, CSS tokens
+
+NOTE: Individual files, not collage sheets.
